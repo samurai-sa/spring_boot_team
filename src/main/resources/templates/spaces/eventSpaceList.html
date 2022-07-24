@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+    <a class="border_btn" href="/event/eventSpaceCreate">新規作成</a>
+
+    <ul th:each="eventSpace : ${eventSpaces}" id="list">
+        <div class="list_eventSpace">
+            <div class="list_eventSpace_li">
+                <li><span>イベントスペース名</span>： [[ ${eventSpace.name} ]]</li>
+                <li><span>収容可能人数</span>： [[ ${eventSpace.capacity} ]]</li>
+            </div>
+            <div class="list_link">
+                <p>
+	                <a th:href="@{/event/eventSpaceEdit/{eventSpaceId} (eventSpaceId=${eventSpace.id})}">
+	                	<i class="fa-solid fa-pen fontawesome_color space_edit">編集</i>
+	                </a>
+                </p>
+                <form method="post" name="deleteForm" th:action="@{/event/eventSpaceDelete/{id} (id=${eventSpace.id})}">
+                    <p class="delete_brank"> <input class="space_delete" type="submit" value="削除"></p>
+                </form>
+            </div>
+        </div>
+    </ul>
+</div>
+</html>

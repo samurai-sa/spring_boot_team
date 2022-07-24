@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+	<div th:fragment="main">
+		<form id="switchForm" method="post" th:action="@{/event/switchPastList}" th:object="${selectStoreForm}">
+			<select class="select" id="storeId" name="storeId" onChange="eventListChange('switchForm')">
+				<option th:value="${0}" th:selected="${storeNum}==0">全店舗</option>
+				<option th:each="thestore : ${stores}" th:value="${thestore.id}" th:text="${thestore.name}" th:selected="${storeNum}==${thestore.id}"></option>
+			</select>
+		</form>
+		<ul th:each="event : ${events}" id="list">
+			<hr>
+			<div class="list_event">
+				<div class="list_event_detail">
+					<div class="list_event_li">
+						<li class="">イベント名： [[ ${event.name} ]]</li>
+						<li class="">日程： [[ ${#temporals.format(event.eventDate, 'yyyy/MM/dd HH:mm')} ]]～[[ ${#temporals.format(event.eventEndDate, 'HH:mm')} ]]</li>
+					</div>
+					<details>
+						<summary>詳細</summary>
+						<li class="">イベント説明： [[ ${event.description} ]]</li>
+						<li class="">整理券 [[ ${event.printedTicket} ]] / [[ ${event.maxTicket} ]] 枚</li>
+					</details>
+				</div>
+			</div>
+		</ul>
+	</div>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+
+    <!-- ▽データ受け取り用(表示されません)▽ -->
+    <div id="elements">
+
+        <span id="targetDate">[[ ${#temporals.format(targetDate, 'yyyyMMdd')} ]]</span>
+
+        <ul th:each="space:${spaces}">
+            <li class="spaceName">[[${space.getName()}]]</li>
+        </ul>
+
+        <ul th:each="event:${events}">
+            <li class="eventName">[[ ${event.getName()}]]</li>
+            <li class="eventspaceName">[[ ${event.getEventspace().getName()}]]</li>
+            <li class="eventDate">[[ ${#temporals.format(event.eventDate, 'yyyyMMddHHmm')} ]]</li>
+            <li class="eventEndDate">[[ ${#temporals.format(event.eventEndDate, 'yyyyMMddHHmm')} ]]</li>
+
+        </ul>
+    </div>
+    <!-- △データ受け取り用(表示されません)△ -->
+
+    <h2>表示中店舗：[[ ${targetStore.name }]]</h2>
+
+    <p class="calendar_transition">
+        <a
+            th:href="@{/event/calendar/{storeId}/{year}/{month}/{date} (storeId=${targetStore.Id}, year=${previousDate.getYear()}, month=${previousDate.getMonthValue()}, date=${previousDate.getDayOfMonth()})}">
+            <i class="fa-solid fa-angle-left"></i> 前の日
+        </a>
+
+        <span><i class="fa-solid fa-calendar-days"></i></span>
+
+        <a
+            th:href="@{/event/calendar/{storeId}/{year}/{month}/{date} (storeId=${targetStore.Id}, year=${nextDate.getYear()}, month=${nextDate.getMonthValue()}, date=${nextDate.getDayOfMonth()})}">
+            次の日 <i class="fa-solid fa-angle-right"></i>
+        </a>
+    </p>
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
+    </script>
+
+    <script type="text/javascript" th:src="@{/js/timeline.js}">
+    </script>
+
+    <script type="text/javascript">
+        drawTimeline();
+    </script>
+
+
+    <!-- タイムライン表示領域 -->
+    <div id="timeline" style="height: 500px;">
+    </div>
+
+</div>
+
+</html>

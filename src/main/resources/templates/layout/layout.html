@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/hamburger_menu.css">
+    <link rel="stylesheet" href="/css/calendar.css">
+    <link rel="icon" href="/img/favicon.png">
+    <script src="https://kit.fontawesome.com/8d2f683582.js" crossorigin="anonymous"></script>
+    <script th:src="@{/js/printEvent.js}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@4/bulma.css" rel="stylesheet">
+    <title th:text="${title} ?: _"></title>
+</head>
+
+<body>
+    <th:block th:if="${notLogin == 'notLogin'}">
+        <div id="header" th:replace="~{layout/header :: notLoginHeader}"></div>
+    </th:block>
+    <th:block th:if="${notLogin != 'notLogin'}">
+        <div id="header" th:replace="~{layout/header :: loginHeader}"></div>
+    </th:block>
+    <main>
+        <h1>[[ ${title} ]]</h1>
+        <div id="main" th:include="__${main}__"></div>
+    </main>
+</body>

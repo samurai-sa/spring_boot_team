@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+	<p>[[ ${message} ]]</p>
+	<ul th:each="store : ${stores} ">
+		<hr>
+		<div class="list_event">
+			<div class="list_event_detail list_store">
+				<div>
+					<li><span>店舗名:</span>[[ ${store.name} ]]</li>
+					<li>イベントスペースの数<span th:text="${store.EventSpaces.size}"></span></li>
+					<th:block th:if="${storeId == store.id}">
+						<a class="border_btn" th:href="@{/space/eventSpaceCreate/{id}(id=${store.id})}">イベントスペースの作成</a>
+					</th:block>
+				</div>
+				<table class="store_table">
+					<div class="list_link" th:each="space : ${store.EventSpaces}">
+						<tr class="event_space">
+							<th class="space_name">
+								イベントスペース名:
+							<td class="link_space"><span>[[${space.name}]]</span></td>
+							</th>
+							<td class="people_number">
+								収容人数: [[${space.capacity}]]
+							</td>
+							<td class="space_link">
+								<a class="btn_link" th:href="@{/event/eventCreate/{eventSpaceId} (eventSpaceId=${space.id})}">予約</a>
+							</td>
+							<th:block th:if="${storeId == store.id}">
+								<td class="space_link">
+									<a class="btn_link" th:href="@{/space/eventSpaceEdit/{id} (id = ${space.id})}">編集</a>
+								</td>
+							</th:block>
+						</tr>
+					</div>
+				</table>
+			</div>
+		</div>
+	</ul>
+</div>
+</html>

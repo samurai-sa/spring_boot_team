@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+	<form id="authentication" method="post" th:action="@{/ticket/authentication/{id} (id=${id})}" th:object="${ticketNumberForm}">
+		<p><input class="ticke_num" type="text" th:field="*{ticketNum}"></p>
+		<p><input class="authenticate_btn" type="submit" value="認証実行"></p>
+	</form>
+	<a class="authenticate" th:href="@{/ticket/qr/{id} (id=${id})}">QR認証</a>
+	<p th:text="${authenticationResult}"></p>
+</div>
+</html>

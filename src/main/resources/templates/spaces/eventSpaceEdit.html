@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+	<form class="" method="post" th:action="@{/space/eventSpaceEdit/{eventSpaceId} (eventSpaceId=${eventSpaceId})}" th:object="${eventSpaceForm}">
+		<p>
+			<label for="name">イベントスペース名：</label>
+			<input type="text" th:field="*{name}">
+			<span th:errors="*{name}"></span>
+		</p>
+		<p>
+			<th:block th:if="${eventSpace.Events.size==0}">
+				<label for="capacity">収容可能人数：</label>
+				<input type="text" th:field="*{capacity}">
+				<span th:errors="*{capacity}"></span>
+			</th:block>
+			<th:block th:if="${eventSpace.Events.size!=0}">
+				<label for="capacity">収容可能人数：</label>
+				<input type="text" th:field="*{capacity}" readonly="readonly"> ＊イベントが作成されているため変更できません
+				<span th:errors="*{capacity}"></span>
+			</th:block>
+		</p>
+		<p>
+			<input class="register space_register" type="submit" value="更新">
+		</p>
+	</form>
+	<form method="post" th:action="@{/space/eventSpaceDelete/{eventSpaceId} (eventSpaceId=${eventSpaceId})}">
+		<input class="space_delete" type="submit" value="削除">
+	</form>
+</div>
+
+</html>

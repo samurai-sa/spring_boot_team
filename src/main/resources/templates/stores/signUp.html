@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+	<form method="post" th:action="@{/store/signUp}" th:object="${signUpForm}">
+		<p>
+			<label for="name">店舗名：</label>
+			<input type="text" th:field="*{name}">
+			<span th:errors="*{name}"></span>
+		</p>
+		<p>
+			<label for="password">パスワード：</label>
+			<input type="password" th:field="*{password}">
+			<span th:errors="*{password}"></span>
+		</p>
+		<p>
+			<input class="space_register register" type="submit" value="登録">
+		</p>
+	</form>
+</div>
+</html>

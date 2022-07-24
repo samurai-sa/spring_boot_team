@@ -1,0 +1,106 @@
+/* ▽カレンダー表示用▽ */
+
+.calendar_container {
+    margin-bottom: 100px;
+
+}
+
+.other_month {
+    color: darkgrey;
+}
+
+.calendar {
+    border-collapse: collapse;
+    width: 100%;
+    height: 80vh;
+    min-width: 100px;
+}
+
+.calendar th {
+    height: 15px;
+    width: 14.2%;
+}
+
+.calendar td {
+    border: solid 1px rgb(170, 170, 170);
+    vertical-align: top;
+    padding: 5px 10px;
+    height: 80px;
+    width: 150px;
+    text-align: right;
+}
+
+.calendar a {
+    color: #333;
+    text-decoration: none;
+}
+
+.calendar a:hover {
+    color: #5DA797;
+}
+
+.day_of_month {
+    margin: 0;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+.calendar ul {
+    padding-left: 20px;
+    margin: 0px 10px 0px 0px;
+}
+
+.cal_event_other {
+    font-size: 12px;
+    margin-top: 5px;
+    margin-right: 10px;
+    padding-left: 2px;
+}
+
+.cal_event {
+    white-space: nowrap;
+    font-size: 12px;
+    margin: 0;
+    text-align: left;
+}
+
+.sunday {
+    color: rgb(180, 0, 0);
+}
+
+.calendar_transition {
+    text-align: center;
+    color: #5DA797;
+}
+
+.calendar_transition a {
+    font-size: 20px;
+    text-decoration: none;
+    color: #333;
+}
+
+.calendar_transition a:hover {
+    color: #5DA797;
+}
+
+.calendar_transition span {
+    margin: 20px;
+}
+
+#elements {
+    display: none;
+}
+
+.fa-calendar-days {
+    font-size: 30px;
+}
+
+.store_info {
+    display: flex;
+}
+
+
+.store_info select {
+    margin-left: 20px;
+    margin-top: 10px;
+}

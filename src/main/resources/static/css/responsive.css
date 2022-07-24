@@ -1,0 +1,200 @@
+.hb_wrap #hb_toggle01 {
+    display: none;
+}
+
+@media screen and (max-width:480px) {
+	@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
+
+	/*ヘッダー*/
+	store_name{
+		float: right;
+	}
+
+	/*全体*/
+	
+	html,body{
+		overflow-x: hidden;
+	}
+		
+	body {
+        /*font-family: "ヒラギノ角ゴ ProN W3";*/
+        width:100%;
+        max-width: 480px !important;
+        min-width: 350px;
+    }
+	
+	header{
+		width:100%;
+	}
+
+	p {
+        width: 100%;
+        margin: 0px 0 10px 0;
+    }
+
+	
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        font-size: 32px;
+        width: 100vw;
+        margin-bottom: 25px;
+    }
+
+    h2 {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    h1_qr.before {
+        font-family: "Font Awesome 6 Free";
+    }
+
+    main {
+        padding: 20px;
+        width:100vw;
+    }
+
+	/*QR*/
+    .qr {
+        text-align: center;
+    }
+    
+    .qr_image{
+	 	width: 100%;
+	}
+
+    .qr label {
+        display: inline-block;
+        text-decoration: none;
+        padding-top: 5px;
+        color: #FFF;
+        width: 200px;
+        height: 200px;
+        line-height: 120px;
+        border: solid 2px #008F8C;
+        border-radius: 20%;
+        text-align: center;
+        overflow: hidden;
+        background-image: linear-gradient(45deg, #0CABA8 0%, #91fdb7 100%);
+        transition: .4s;
+    }
+
+    .qr_upload {
+        margin-bottom: 25px;
+    }
+
+
+    .input {
+        width: 90vw;
+        height: 50px;
+        margin: auto;
+        margin-right: 40px;
+        margin-bottom: 20px;
+        border: none;
+        display: inline-block;
+        font-weight: bold;
+        font-size: 20px;
+        padding: 0.25em 0.5em;
+        text-decoration: none;
+        color: #FFF;
+        background: #0FC2C0;
+        transition: .4s;
+    }
+
+    .fa-solid {
+        font-weight: 10px;
+    }
+     
+    .qrsize{
+		margin:15px;
+		font-size:8em;
+	}
+    
+    
+    .qrread {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	.authenticate {
+		padding-top:20px;
+	}
+	
+	
+	/*店舗一覧*/
+	.store_table{
+		text-align:left;
+		margin:auto;
+	}
+	
+	.event_space{
+		display: flex;
+		flex-flow: column;
+	}
+	
+	.reserve_modify {
+		display:flex;
+	}
+	
+	/*イベント一覧*/
+	.subtitle{
+		display:none;
+	}
+	
+	.size{
+		font-size:1.5em;
+	}
+
+    .calendar_transition i {
+        font-size: 20px;
+    }
+
+    #timeline {
+        max-width: 480px !important;
+    }
+
+    .calendar {
+        max-width: 480px !important;
+    }
+
+    .calendar td {
+        max-width: 50px;
+        max-height: 50px;
+        font-size: 5px;
+    }
+
+    .calendar ul {
+        padding: 0;
+    }
+
+    .cal_event,
+    .cal_event_other {
+        font-size: 4px;
+        overflow: scroll;
+        margin: 0;
+    }
+    
+    .event_link{
+		margin-top:10px;
+		margin-bottom:10px;
+	}
+	
+	.list_link li {
+		width: 60px;
+	}
+	
+	.list_event_li{
+		overflow-wrap: break-word;	
+	}
+	
+	.select {
+		width: 100px;
+		height: 30px;
+		cursor: pointer;
+	}
+	
+}

@@ -1,0 +1,506 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
+
+/**************** 全体 ****************/
+body {
+	margin: 0 auto;
+	font-size: 120%;
+	font-family: 'Noto Sans JP', sans-serif;
+	color: #333;
+	min-width: 770px;
+	background: #F7F7F7;
+}
+
+main {
+	padding: 0 40px;
+	margin-top: 10px;
+}
+
+/**************** ヘッダー ****************/
+header form {
+	display: inline;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+header input {
+	font-size: 1em;
+	font-weight: bold;
+	background: none;
+	border: none;
+	color: #E9E9E9;
+	cursor: pointer;
+}
+
+header form::before {
+	font-family: "Font Awesome 6 Free";
+	color: #E9E9E9;
+	content: '\f2f5';
+	font-weight: 900;
+	font-size: 1em;
+}
+
+header .signup::before {
+	font-family: "Font Awesome 6 Free";
+	color: #E9E9E9;
+	font-weight: 900;
+	font-size: 1em;
+	content: '\f044';
+}
+
+header .login::before {
+	font-family: "Font Awesome 6 Free";
+	color: #E9E9E9;
+	font-weight: 900;
+	font-size: 1em;
+	content: '\f2f6';
+}
+
+
+
+/**************** ログイン ****************/
+.login {
+	border: none;
+	border-radius: 10px;
+	background-color: #5DA797;
+	color: #fff;
+	font-size: 100%;
+	height: 40px;
+	width: 200px;
+}
+
+
+/**************** イベント一覧 ****************/
+#list {
+	list-style: none;
+	padding: 0;
+}
+
+.select {
+	width: 200px;
+	height: 30px;
+	cursor: pointer;
+}
+
+.toggle_btn {
+	border: solid 2px #5DA797;
+	border-radius: 10px;
+	color: #5DA797;
+	font-size: 100%;
+	margin-top: 10px;
+	text-decoration: none;
+	height: 28px;
+	background-color: #DDDDDD;
+	width: 100px;
+	display: inline-block;
+	text-align: center;
+}
+
+.list_event {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.list_event_li span {
+	display: inline-block;
+	width: 120px;
+}
+
+.list_event_li li {
+	padding: 0 5% 0 0;
+	line-height: 1.6;
+}
+
+.list_event_detail {
+	width: 700px;
+}
+
+.list_store {
+	width: 100%;
+}
+
+.list_link {
+	text-align: right;
+	display: flex;
+	list-style: none;
+}
+
+.list_link li {
+	width: 140px;
+}
+
+
+.list_link .fontawesome_btn_link {
+	cursor: pointer;
+	border: none;
+	color: #5DA797;
+	font-size: 100%;
+	height: 28px;
+	background-color: transparent;
+	font-weight: 900;
+	padding: 0;
+}
+
+
+.list_link .btn {
+	border: none;
+	border-radius: 10px;
+	color: #5DA797;
+	font-size: 100%;
+	margin: 0 0 1% 0;
+	text-decoration: none;
+	height: 28px;
+}
+
+.brank {
+	width: 20px;
+}
+
+.fontawesome_color {
+	color: #5DA797;
+}
+.fontawesome_color:hover{
+	color: rgb(47, 213, 101);
+}
+
+.fontawesome_btn_link:hover{
+	color: rgb(47, 213, 101);
+}
+
+.ticket_print{
+	color:#5DA797;
+}
+
+.ticket_print:hover{
+	color: rgb(47, 213, 101);
+}
+
+
+/**************** 店舗一覧 ****************/
+.border_btn {
+	border: solid 2px #5DA797;
+	border-radius: 10px;
+	color: #5DA797;
+	font-size: 100%;
+	margin: 1% 0 1% 0;
+	text-decoration: none;
+	height: 28px;
+	background-color: #DDDDDD;
+	width: 300px;
+	display: inline-block;
+	text-align: center;
+}
+
+.border_btn:hover {
+	background-color: #5DA797;
+	color: #fff;
+}
+
+.btn_link {
+	border: none;
+	border-radius: 10px;
+	color: #5DA797;
+	font-size: 100%;
+	margin: 0 0 1% 20px;
+	text-decoration: none;
+	height: 28px;
+	font-weight: 500;
+	width: 60px;
+}
+
+.btn_link:hover {
+	color: rgb(47, 213, 101);
+}
+
+.store_table {
+	margin-left: 50px;
+	max-width: 100%;
+}
+
+.event_space {
+	text-align: left;
+	padding-left: 20px;
+	line-height: 2;
+}
+
+.link_space{
+	width:600px;
+}
+
+.people_number {
+	padding-left: 20px;
+}
+
+.space_link {
+	padding-left: 20px;
+}
+
+.space_name {
+	width: 180px;
+}
+
+/**************** イベント作成 ****************/
+form p span {
+	color: #f00;
+}
+
+.register {
+	border: 2px solid #5DA797;
+	border-radius: 10px;
+	background-color: #5DA797;
+	color: #fff;
+	font-size: 100%;
+	margin: 0 0 1% 0;
+	width: 300px;
+	height: 40px;
+}
+
+.register:hover {
+	cursor: pointer;
+	background: #fff;
+	color: #5DA797;
+}
+
+.delete {
+	border: 2px solid #B22222;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 100%;
+	margin: 0 0 1% 0;
+	width: 300px;
+	height: 40px;
+	background-color: #B22222;
+	cursor: pointer;
+}
+
+.delete:hover {
+	background: #fff;
+	color: #B22222;
+}
+
+
+
+/**************** イベント編集 ****************/
+.update {
+	border: 2px solid #5DA797;
+	border-radius: 10px;
+	background-color: #5DA797;
+	color: #fff;
+	font-size: 100%;
+	margin: 0 0 1% 0;
+	width: 300px;
+	height: 40px;
+}
+
+.update:hover {
+	background: #fff;
+	color: #5DA797;
+}
+
+
+/**************** イベント検索 ****************/
+.search_btn {
+	cursor: pointer;
+	border: 2px solid #5DA797;
+	border-radius: 10px;
+	background-color: #5DA797;
+	color: #fff;
+	font-size: 100%;
+	width: 300px;
+	height: 40px;
+}
+
+.search_btn:hover {
+	background: #fff;
+	color: #5DA797;
+}
+
+
+/**************** イベントスペース一覧 ****************/
+.space_edit {
+	border: solid 2px #5DA797;
+	border-radius: 10px;
+	background-color: #DDDDDD;
+	width: 100px;
+	text-align: center;
+	color: #5DA797;
+}
+
+.space_register {
+	width: 200px;
+	margin-bottom: 0;
+}
+
+.space_delete {
+	border: 2px solid #B22222;
+	border-radius: 10px;
+	background-color: #B22222;
+	color: #fff;
+	font-size: 100%;
+	margin: 0 10px 1% 0;
+	width: 200px;
+	height: 40px;
+	cursor: pointer;
+}
+
+.space_delete:hover {
+	background: #fff;
+	color: #B22222;
+}
+
+.date:hover {
+	background-image: url(../img/ohosan.png);
+	background-size: 10%;
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+
+
+/**************** 印刷画面 ****************/
+.print_btn {
+	cursor: pointer;
+	border: 2px solid #5DA797;
+	border-radius: 10px;
+	background-color: #5DA797;
+	color: #fff;
+	font-size: 100%;
+	margin: 0 0 1% 0;
+	width: 300px;
+	height: 40px;
+}
+
+.print_btn:hover {
+	background: #fff;
+	color: #5DA797;
+}
+
+/**************** 認証 ****************/
+.authenticate {
+	border: none;
+	border-radius: 10px;
+	color: #5DA797;
+	font-size: 100%;
+	margin: 0 0 1% 0;
+	text-decoration: none;
+	height: 28px;
+}
+
+.authenticate:hover {
+	font-size: 22px;
+}
+
+.authenticate_btn {
+	cursor: pointer;
+	border: solid 2px #5DA797;
+	border-radius: 10px;
+	background-color: #5DA797;
+	color: #fff;
+	font-size: 100%;
+	margin: 0 0 1% 0;
+	width: 300px;
+	height: 40px;
+}
+
+.authenticate_btn:hover {
+	cursor: pointer;
+	background: #fff;
+	color: #5DA797;
+}
+
+/****************　▽カレンダー表示用▽ ****************/
+.this_month {}
+
+.calendar_container {
+	margin-bottom: 100px;
+
+}
+
+.other_month {
+	color: darkgrey;
+}
+
+.calendar {
+	border-collapse: collapse;
+	width: 100%;
+	height: 80vh;
+	min-width: 100px;
+}
+
+.calendar th {
+	height: 15px;
+	width: 14.2%;
+}
+
+.calendar td {
+	border: solid 1px rgb(170, 170, 170);
+	vertical-align: top;
+	padding: 5px 10px;
+	height: 80px;
+	width: 150px;
+	text-align: right;
+}
+
+.calendar a {
+	color: #333;
+	text-decoration: none;
+}
+
+.calendar a:hover {
+	color: #5DA797;
+}
+
+.day_of_month {
+	margin: 0;
+	margin-right: 5px;
+	margin-bottom: 10px;
+}
+
+.calendar ul {
+	padding-left: 20px;
+	margin: 0px 10px 0px 0px;
+}
+
+.cal_event_other {
+	font-size: 12px;
+	margin-top: 5px;
+	margin-right: 10px;
+	padding-left: 2px;
+}
+
+.cal_event {
+	white-space: nowrap;
+	font-size: 12px;
+	margin: 0;
+	text-align: left;
+}
+
+.sunday {
+	color: rgb(180, 0, 0);
+}
+
+.calendar_transition {
+	text-align: center;
+	color: #5DA797;
+}
+
+.calendar_transition a {
+	font-size: 20px;
+	text-decoration: none;
+	color: #333;
+}
+
+.calendar_transition a:hover {
+	color: #5DA797;
+}
+
+.calendar_transition span {
+	margin: 20px;
+}
+
+#elements {
+	display: none;
+}
+
+.fa-calendar-days {
+	font-size: 30px;
+}
+

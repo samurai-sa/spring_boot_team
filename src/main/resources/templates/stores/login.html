@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+	<p>[[ ${message} ]]</p>
+	<form method="post" th:action="@{/store/login}">
+		<p>
+			<label for="id">店舗ID：</label>
+			<input type="text" id="id" name="id" required autofocus>
+		</p>
+		<p>
+			<label for="password">パスワード：</label>
+			<input type="password" id="password" name="password" required>
+		</p>
+		<p>
+			<input class="register space_register" type="submit" value="ログイン">
+		</p>
+	</form>
+</div>
+</html>

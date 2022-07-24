@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<div th:fragment="loginHeader">
+	<header>
+		<!--▼▼ハンバーガーメニューここから▼▼-->
+
+		<div class="hb_cont">
+			<div class="hb_wrap">
+				<input type="checkbox" id="hb_toggle01">
+				<label for="hb_toggle01" class="menu_trigger">
+					<span></span>
+				</label>
+
+				<div class="hb_list">
+					<input type="checkbox" id="hb_toggle01">
+					<label for="hb_toggle01">
+						<span></span>
+					</label>
+					<ul class="header_nav">
+						<li class="link_list"><a href="/store/">店舗一覧</a></li>
+						<li class="link_list"><a href="/event/">イベント一覧</a></li>
+						<li class="link_list"><a href="/event/eventCreate">イベント作成</a></li>
+						<li class="link_list"><a id="calendar_link" href="#">カレンダー</a></li>
+						<li class="link_list"><a href="/event/eventSearch">イベント検索</a></li>
+						<li class="logout_li">
+							<form method="post" th:action="@{/logout}">
+								<input class="logout" type="submit" value="ログアウト">
+							</form>
+						</li>
+						<li class="store_name"><a>[[ ${store.name} ]]</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" th:inline="javascript">
+			// 今日の日付からカレンダーのリンク生成
+			var storeId = /*[[${store.id}]]*/ 1;
+			var target = document.getElementById("calendar_link");
+			var today = new Date();
+			var year = today.getFullYear();
+			var month = today.getMonth() + 1;
+			target.href = "/event/calendar/" + storeId + "/" + year + "/" + month;
+
+		</script>
+		<!--▲▲ハンバーガーメニューここまで▲▲-->
+	</header>
+</div>
+
+<div th:fragment="notLoginHeader">
+	<header>
+		<ul class="notLogin">
+			<li><a class="signup" href="/store/signUp"> サインアップ</a></li>
+			<li><a class="login" href="/store/login"> ログイン</a></li>
+		</ul>
+	</header>
+</div>
+
+</html>

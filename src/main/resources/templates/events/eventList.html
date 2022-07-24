@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+	<p>[[ ${message} ]]</p>
+	<form id="switchForm" method="post" th:action="@{/event/switchList}" th:object="${selectStoreForm}">
+		<select class="select" name="storeId" onChange="eventListChange('switchForm')">
+			<option th:value="${0}" th:selected="${storeNum}==0">全店舗</option>
+			<option th:each="thestore : ${stores}" th:value="${thestore.id}" th:text="${thestore.name}"
+				th:selected="${storeNum}==${thestore.id}"></option>
+		</select>
+		
+		<th:block th:if="${storeNum}!=0">
+				<select class="select" name="eventspaceId" onChange="eventListChange('switchForm')">
+					<option th:value="${0}" th:selected="${eventSpaceId}==0">全イベントスペース</option>
+					<option th:each="eventSpace : ${eventSpaceList}" th:value="${eventSpace.id}" th:text="${eventSpace.name}"
+					th:selected="${eventSpaceId}==${eventSpace.id}"></option>
+				</select>
+		</th:block>
+	</form>
+		<a class="btn_link" href="/event/pastList">過去のイベント</a>
+	<ul th:each="event : ${events}" id="list">
+		<hr>
+		<div class="list_event">
+			<div class="list_event_detail">
+				<div class="list_event_li">
+					<li class="wrap"><span>イベント名</span>： [[ ${event.name} ]]</li>
+					<li>
+						<span>場所</span>: [[${event.Eventspace.Store.name}]], [[${event.Eventspace.name}]]
+					</li>
+					<li><span>イベント日程</span>： [[ ${#temporals.format(event.eventDate, 'yyyy/MM/dd HH:mm')} ]]～[[
+						${#temporals.format(event.eventEndDate, 'HH:mm')} ]]</li>
+					<li>
+						<span>CreatedBy</span>:[[${event.createdBy}]]
+					</li>
+				</div>
+				<details class="list_detail">
+					<summary>詳細</summary>
+					<li class="wrap">イベント説明： [[ ${event.description} ]]</li>
+					<li>整理券 [[ ${event.printedTicket} ]] / [[ ${event.maxTicket} ]] 枚</li>
+				</details>
+			</div>
+			<div class="list_link event_link">
+				<th:block th:if="${storeId == event.Eventspace.Store.id || storeName == event.createdBy}">
+					<a th:href="@{/event/eventEditing/{id} (id=${event.id})}">
+						<i class="fa-solid fa-pen fontawesome_color size"><i class="subtitle">イベント編集</i></i>
+					</a>
+				</th:block>
+				<th:block th:if="${storeId == event.Eventspace.Store.id}">
+					<li>
+						<a class="btn" th:href="@{/ticket/qr/{id} (id=${event.id})}">
+							<i class="fa-solid fa-qrcode fontawesome_color size"><i class="subtitle"> 認証開始</i></i>
+						</a>
+					</li>
+				</th:block>
+				<span class="brank"></span>
+				<li th:if="${event.printedTicket < event.maxTicket}">
+					<form class="ticket_print" method="post"
+						th:action="@{/ticket/generateNumber/{id} (id=${event.id})}">
+						<button class="fontawesome_btn_link" id="generateNumber" type="submit">
+							<i class="fa-solid fa-bandage fontawesome_color size">
+								<i class="subtitle">整理券発行</i>
+							</i>
+						</button>
+					</form>
+				</li>
+			</div>
+		</div>
+	</ul>
+</div>
+
+</html>

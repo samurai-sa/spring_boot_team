@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+
+    <div class="store_info">
+        <h2>表示中店舗：[[ ${targetStore.name }]]</h2>
+        <p>
+
+            <select class="select" name="changeStore">
+                <option value="" selected>店舗選択</option>
+                <option th:each="s : ${stores}" th:value="${s.id}">
+                    [[${s.name}]]
+                </option>
+            </select>
+        </p>
+    </div>
+
+    <script type="text/javascript" th:src="@{/js/timeline.js}">
+    </script>
+
+    <script type="text/javascript" th:inline="javascript">
+        var year = /*[[${calendar.year}]]*/ 2022;
+        var month = /*[[${calendar.month}]]*/ 1;
+        switchStore(year, month)
+    </script>
+
+    <div class="calendar_container">
+
+        <p class="calendar_transition">
+            <a
+                th:href="@{/event/calendar/{storeId}/{year}/{month}/ (storeId=${targetStore.id}, year=${calendar.getPreviousMonthYearValue()}, month=${calendar.getPreviousMonthValue()})}">
+                <i class="fa-solid fa-angle-left"></i> 前の月
+            </a>
+
+            <span><i class="fa-solid fa-calendar-days"></i></span>
+
+            <a
+                th:href="@{/event/calendar/{storeId}/{year}/{month}/ (storeId=${targetStore.id}, year=${calendar.getNextMonthYearValue()}, month=${calendar.getNextMonthValue()})}">
+                次の月 <i class="fa-solid fa-angle-right"></i>
+            </a>
+        </p>
+        <table class="calendar">
+
+            <!-- 曜日表示 -->
+            <tr>
+                <th class="sunday">SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+
+            <th:block th:each="i : ${#numbers.sequence(0,4)}">
+                <tr>
+                    <!-- 7日で一段 -->
+                    <th:block th:each="date:${calendar.getWeek(i)}">
+
+                        <th:block th:if="${date.isThisMonth}">
+                            <td class="this_month">
+                                <a
+                                    th:href="@{/event/calendar/{storeId}/{year}/{month}/{date} (storeId=${targetStore.id}, year=${calendar.year}, month=${calendar.month}, date=${date.getDayOfMonth})}">
+                                    <!-- 日曜日は赤 -->
+                                    <th:block th:if="${date.getWeekOfDay()==7}">
+                                        <p class="sunday day_of_month">
+                                            [[${date.getDayOfMonth()}]]
+                                        </p>
+                                    </th:block>
+
+                                    <th:block th:unless="${date.getWeekOfDay()==7}">
+                                        <p class="day_of_month">[[${date.getDayOfMonth()}]]</p>
+                                    </th:block>
+                                </a>
+
+
+                                <!-- イベントがあれば表示 -->
+                                <th:block th:if="${date.hasEvents}">
+
+                                    <th:block th:if="${date.events.size() gt 2}">
+                                        <ul>
+                                            <th:block th:each="i : ${#numbers.sequence(0,1)}">
+                                                <li class="cal_event">
+                                                    [[${date.events.get(i).name}]]
+                                                </li>
+                                            </th:block>
+                                        </ul>
+
+                                        <p class="cal_event_other">
+                                            ほか[[${date.events.size() - 2}]]件
+                                        </p>
+
+                                    </th:block>
+
+                                    <th:block th:unless="${date.events.size() gt 2}">
+                                        <ul>
+                                            <li class="cal_event" th:each="event:${date.events}">
+                                                [[${event.name}]]
+                                            </li>
+                                        </ul>
+                                    </th:block>
+                                </th:block>
+
+                            </td>
+                        </th:block>
+
+                        <!-- 当月以外の場合色を薄く -->
+                        <th:block th:unless=" ${date.isThisMonth}">
+                            <td class="other_month">
+                                <p class="day_of_month">[[${date.getDayOfMonth()}]]</p>
+                                <th:block th:if="${date.hasEvents}">
+                                    <div th:each="event:${date.events}">
+                                        [[${event.name}]]
+                                    </div>
+                                </th:block>
+                            </td>
+                        </th:block>
+
+
+
+                    </th:block>
+                </tr>
+            </th:block>
+        </table>
+    </div>
+</div>
+
+</html>

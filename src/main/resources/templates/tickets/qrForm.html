@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+    <div id="app">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+        <form class="qr" method="post" th:action="@{/ticket/qrToNumber/{id} (id=${id})}" enctype="multipart/form-data" th:object="${qrForm}">
+            <p class="qr_image"><label for="upload"><i class="fas fa-qrcode qrsize"></i></label>
+                <input id="upload" class="qr_upload" type="file" accept="image/*" th:field="*{qr}" capture required>
+            </p>
+
+            <div id="preview"></div>
+            <p>
+                <input type="submit" class="input authenticate_btn" value="読み込み">
+            </p>
+            <ul>
+				<li th:each="error : ${#fields.detailedErrors()}">
+					<span th:text="${error.message}"></span>
+				</li>
+			</ul>
+        </form>
+        <a class="authenticate" th:href="@{/ticket/authenticateNumber/{id} (id=${id})}">整理券番号の入力</a>
+        <p th:text="${authenticationResult}"></p>
+    </div>
+</div>
+</html>

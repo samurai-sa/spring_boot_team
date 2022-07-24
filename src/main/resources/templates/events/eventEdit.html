@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main" th:each="event:${event}">
+
+	<form class="" method="post" th:action="@{/event/eventEditing/{eventId} (eventId = ${event.id})}" th:object="${eventForm}">
+		<p>
+			イベントスペースの選択: <select name="eventspaceId">
+				<option th:each="eventSpace : ${eventSpaces}" th:value="${eventSpace.id}" 
+				th:selected="${eventSpaceId==eventSpace.id}">[[${eventSpace.Store.name}]] [[${eventSpace.name}]]
+				</option>
+			</select>
+		</p>
+		<p>
+			<label for="name">イベント名：</label>
+			<input type="text" th:field="*{name}">
+			<span th:errors="*{name}"></span>
+		</p>
+
+		<p>
+			<label for="description">イベントの説明：</label>
+			<span th:errors="*{description}"></span><br>
+			<textarea th:field="*{description}" rows="20" cols="50"></textarea>
+		</p>
+
+		<p>
+			<label for="eventDate">開催日：</label>
+			<input type="date" th:field="*{eventDate}">
+			<span th:errors="*{eventDate}"></span>
+		</p>
+
+		<p>
+			<label for="eventTime">開催時間：</label>
+			<input type="time" th:field="*{eventTime}" min="10:00" max="20:00" step="1800" list="data-list">
+			<datalist id="data-list">
+				<option th:each="time : ${timeList}" th:value="${time}">[[ ${time} ]]</option>
+			</datalist>
+			<span th:errors="*{eventTime}"></span>
+			<span th:errors="*{eventTimeAfterEventEndTime}"></span>
+		</p>
+		<p>
+			<label for="eventEndTime">終了時間：</label>
+			<input type="time" th:field="*{eventEndTime}" min="10:00" max="20:00" step="1800" list="data-list">
+			<datalist id="data-list">
+				<option th:each="time : ${timeList}" th:value="${time}">[[ ${time} ]]</option>
+			</datalist>
+			<span th:errors="*{eventEndTime}"></span>
+		</p>
+		<p>
+			<label for="maxTicket">参加上限：</label>
+			<input type="text" th:field="*{maxTicket}">
+			<span th:errors="*{maxTicket}"></span>
+		</p>
+		<p>
+			<input class="update" type="submit" value="更新">
+		</p>
+	</form>
+
+	<form method="post" th:action="@{/event/eventDelete/{eventId} (eventId=${event.id})}">
+		<button class="delete"type="submit" value="削除">削除</button>
+	</form>
+</div>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+	<ul class="list_ticket_detail">
+
+		<li>
+			イベント名：
+			<br>[[ ${event.name} ]]
+		</li>
+		<li>
+			日時：&thinsp;[[ ${#temporals.format(event.eventDate, 'yyyy年MM月dd日 HH時mm分')} ]]～[[
+			${#temporals.format(event.eventEndDate, 'HH時mm分')} ]]
+		</li>
+	</ul>
+	<h2><a class=“disableTel”>整理券番号： [[ ${ticketNum} ]]</a></h2>
+
+	<img th:src="${image}">
+
+	<p><input class="print_btn" type="button" value="このページを印刷する" id="printButton" onclick="printClick()"></p>
+
+
+	<!-- 登録＆スラックでお知らせ -->
+	<form name="ticketRegister"
+		th:action="@{/ticket/{eventId}/{ticketNum}/register (eventId=${event.id}, ticketNum=${ticketNum})}"
+		method="post">
+	</form>
+
+</div>
+
+</html>
